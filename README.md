@@ -1,6 +1,7 @@
-# Laporan Proyek Machine Learning - Nama Anda
-
+# Laporan Proyek Machine Learning - Alexander Kent So
 ## Domain Proyek
+
+![alt text](image.png)
 
 Pada bagian ini, kamu perlu menuliskan latar belakang yang relevan dengan proyek yang diangkat.
 
