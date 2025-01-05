@@ -1,54 +1,60 @@
 # Laporan Proyek Machine Learning - Alexander Kent So
 ## Domain Proyek
 
-![alt text](image.png)
+Proyek machine learning ini mengangkat isu mengenai **lingkungan**, dengan fokus **klasifikasi kualitas udara**
 
-Pada bagian ini, kamu perlu menuliskan latar belakang yang relevan dengan proyek yang diangkat.
+**Latar Belakang**
 
-**Rubrik/Kriteria Tambahan (Opsional)**:
-- Jelaskan mengapa dan bagaimana masalah tersebut harus diselesaikan
-- Menyertakan hasil riset terkait atau referensi. Referensi yang diberikan harus berasal dari sumber yang kredibel dan author yang jelas.
-  
-  Format Referensi: [Judul Referensi](https://scholar.google.com/) 
+![alt text](asset/cover.png)
+
+Polusi udara merupakan ancaman serius bagi ekosistem. Kualitas udara yang buruk tidak hanya memengaruhi kesehatan manusia, tetapi juga merusak lingkungan. Data Indeks Kualitas Udara (AQI) menunjukkan bahwa kualitas udara di Indonesia tergolong buruk, terutama selama musim kemarau. Meskipun demikian, masih banyak orang yang mengabaikan bahaya polusi udara.[[1](https://ayosehat.kemkes.go.id/bahaya-polusi-udara-bagi-kesehatan)] 
+Dampak buruk kualitas udara bagi kesehatan meliputi gangguan pada mata, masalah pernapasan, penyakit kardiovaskular, hingga gangguan kognitif.[[1](https://ayosehat.kemkes.go.id/bahaya-polusi-udara-bagi-kesehatan)] 
+Melalui proyek ini, diharapkan kesadaran akan pentingnya menjaga kualitas udara yang baik semakin meningkat, sehingga masyarakat Indonesia dapat mengambil langkah yang lebih bijak dalam menangani polusi udara.
 
 ## Business Understanding
 
-Pada bagian ini, kamu perlu menjelaskan proses klarifikasi masalah.
-
-Bagian laporan ini mencakup:
+Dengan adanya model klasifikasi kualitas udara, masyarakat dapat dengan cepat dan bijak mengetahui kondisi udara di sekitar mereka. Hal ini memungkinkan mereka untuk mengambil langkah-langkah yang tepat dalam menghadapi atau mengurangi dampak polusi udara.
 
 ### Problem Statements
 
-Menjelaskan pernyataan masalah latar belakang:
-- Pernyataan Masalah 1
-- Pernyataan Masalah 2
-- Pernyataan Masalah n
+Berdasarkan latar belakang proyek ini, berikut adalah pernyataan masalah yang ingin diselesaikan:
+- pernyataan masalah 1
 
 ### Goals
 
-Menjelaskan tujuan dari pernyataan masalah:
+tujuan dari proyek ini adalah:
 - Jawaban pernyataan masalah 1
-- Jawaban pernyataan masalah 2
-- Jawaban pernyataan masalah n
 
-Semua poin di atas harus diuraikan dengan jelas. Anda bebas menuliskan berapa pernyataan masalah dan juga goals yang diinginkan.
-
-**Rubrik/Kriteria Tambahan (Opsional)**:
-- Menambahkan bagian “Solution Statement” yang menguraikan cara untuk meraih goals. Bagian ini dibuat dengan ketentuan sebagai berikut: 
-
-    ### Solution statements
-    - Mengajukan 2 atau lebih solution statement. Misalnya, menggunakan dua atau lebih algoritma untuk mencapai solusi yang diinginkan atau melakukan improvement pada baseline model dengan hyperparameter tuning.
-    - Solusi yang diberikan harus dapat terukur dengan metrik evaluasi.
+### Solution statements
+- Mengajukan 2 atau lebih solution statement. Misalnya, menggunakan dua atau lebih algoritma untuk mencapai solusi yang diinginkan atau melakukan improvement pada baseline model dengan hyperparameter tuning.
+- Solusi yang diberikan harus dapat terukur dengan metrik evaluasi.
 
 ## Data Understanding
-Paragraf awal bagian ini menjelaskan informasi mengenai data yang Anda gunakan dalam proyek. Sertakan juga sumber atau tautan untuk mengunduh dataset. Contoh: [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Restaurant+%26+consumer+data).
+Proyek ini menggunakan dataset **Air Quality and Pollution Assessment** oleh **Mujtaba Mateen** yang diambil dari [kaggle](https://www.kaggle.com/datasets/mujtabamatin/air-quality-and-pollution-assessment) pada tanggal 30 Desember 2024.
 
-Selanjutnya uraikanlah seluruh variabel atau fitur pada data. Sebagai contoh:  
+|*|**Keterangan**|
+| -------- | ------- |
+| Jumlah data | 5000 |
+| Kondisi data | well-documented & clean |
+| Usability | 10.00 |
 
-### Variabel-variabel pada Restaurant UCI dataset adalah sebagai berikut:
-- accepts : merupakan jenis pembayaran yang diterima pada restoran tertentu.
-- cuisine : merupakan jenis masakan yang disajikan pada restoran.
-- dst
+### Variabel fitur:
+- **Temperature (°C)**: Suhu rata-rata di wilayah tersebut.
+- **Humidity (%)**: Kelembapan relatif yang tercatat di - wilayah tersebut.
+- **PM2.5 Concentration (µg/m³)**: Tingkat partikel halus di udara.
+- **PM10 Concentration (µg/m³)**: Tingkat partikel kasar di udara.
+- **NO2 Concentration (ppb)**: Tingkat nitrogen dioksida di udara.
+- **SO2 Concentration (ppb)**: Tingkat sulfur dioksida di udara.
+- **CO Concentration (ppm)**: Tingkat karbon monoksida di udara.
+- **Proximity to Industrial Areas (km)**: Jarak ke zona industri terdekat.
+- **Population Density (people/km²)**: Jumlah penduduk per kilometer persegi di wilayah tersebut.
+
+### Variabel target:
+**Air Quality Levels**: Kualitas udara berdasarkan fitur yang diberikan yang digolongkan dalam 4 kategori, yaitu:
+- **Good**(udara bersih dengan tingkat polusi rendah)
+- **Moderate**(Kualitas udara yang dapat diterima, namun terdapat beberapa polutan)
+- **Poor**(Polusi udara yang terlihat dan dapat menyebabkan masalah kesehatan bagi kelompok sensitif)
+- **Hazardous**(Udara sangat tercemar yang menimbulkan risiko kesehatan serius bagi populasi).
 
 **Rubrik/Kriteria Tambahan (Opsional)**:
 - Melakukan beberapa tahapan yang diperlukan untuk memahami data, contohnya teknik visualisasi data atau exploratory data analysis.
@@ -79,10 +85,3 @@ Ingatlah, metrik evaluasi yang digunakan harus sesuai dengan konteks data, probl
 
 **Rubrik/Kriteria Tambahan (Opsional)**: 
 - Menjelaskan formula metrik dan bagaimana metrik tersebut bekerja.
-
-**---Ini adalah bagian akhir laporan---**
-
-_Catatan:_
-- _Anda dapat menambahkan gambar, kode, atau tabel ke dalam laporan jika diperlukan. Temukan caranya pada contoh dokumen markdown di situs editor [Dillinger](https://dillinger.io/), [Github Guides: Mastering markdown](https://guides.github.com/features/mastering-markdown/), atau sumber lain di internet. Semangat!_
-- Jika terdapat penjelasan yang harus menyertakan code snippet, tuliskan dengan sewajarnya. Tidak perlu menuliskan keseluruhan kode project, cukup bagian yang ingin dijelaskan saja.
-
