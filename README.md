@@ -1,6 +1,5 @@
 # Laporan Proyek Machine Learning - Alexander Kent So
 ## Domain Proyek
-
 Proyek machine learning ini mengangkat isu mengenai **lingkungan**, dengan fokus **klasifikasi kualitas udara**
 
 **Latar Belakang**
@@ -12,22 +11,21 @@ Dampak buruk kualitas udara bagi kesehatan meliputi gangguan pada mata, masalah 
 Melalui proyek ini, diharapkan kesadaran akan pentingnya menjaga kualitas udara yang baik semakin meningkat, sehingga masyarakat Indonesia dapat mengambil langkah yang lebih bijak dalam menangani polusi udara.
 
 ## Business Understanding
-
 Dengan adanya model klasifikasi kualitas udara, masyarakat dapat dengan cepat dan bijak mengetahui kondisi udara di sekitar mereka. Hal ini memungkinkan mereka untuk mengambil langkah-langkah yang tepat dalam menghadapi atau mengurangi dampak polusi udara.
 
 ### Problem Statements
-
 Berdasarkan latar belakang proyek ini, berikut adalah pernyataan masalah yang ingin diselesaikan:
-- pernyataan masalah 1
+- Bagaimana cara menentukan kategori kualitas udara di suatu wilayah berdasarkan data yang ada?
+- Apa langkah yang dapat diambil masyarakat untuk mengurangi paparan polusi udara berdasarkan prediksi kualitas udara?
 
 ### Goals
-
 tujuan dari proyek ini adalah:
-- Jawaban pernyataan masalah 1
+- Membangun model klasifikasi kualitas udara di suatu wilayah berdasarkan data yang tersedia.
+- Meningkatkan kesadaran masyarakat tentang pentingnya menjaga kualitas udara dengan menyediakan informasi yang mudah diakses mengenai kualitas udara di sekitar mereka.
 
 ### Solution statements
-- Mengajukan 2 atau lebih solution statement. Misalnya, menggunakan dua atau lebih algoritma untuk mencapai solusi yang diinginkan atau melakukan improvement pada baseline model dengan hyperparameter tuning.
-- Solusi yang diberikan harus dapat terukur dengan metrik evaluasi.
+- Proyek ini menggunakan 2 algoritma machine learning, yaitu: KNN dan neural network dari TensorFlow. Neural network dipilih karena fleksibilitasnya dalam mengolah berbagai tipe data. KNN dipilih karena merupakan algoritma klasifikasi yang sederhana. Performa dari 2 algoritma ini akan dibandingkan dengan metrik akurasi untuk menentukan algoritma yang lebih baik.
+
 
 ## Data Understanding
 Proyek ini menggunakan dataset **Air Quality and Pollution Assessment** oleh **Mujtaba Mateen** yang diambil dari [kaggle](https://www.kaggle.com/datasets/mujtabamatin/air-quality-and-pollution-assessment) pada tanggal 30 Desember 2024.
@@ -56,32 +54,46 @@ Proyek ini menggunakan dataset **Air Quality and Pollution Assessment** oleh **M
 - **Poor**(Polusi udara yang terlihat dan dapat menyebabkan masalah kesehatan bagi kelompok sensitif)
 - **Hazardous**(Udara sangat tercemar yang menimbulkan risiko kesehatan serius bagi populasi).
 
-**Rubrik/Kriteria Tambahan (Opsional)**:
-- Melakukan beberapa tahapan yang diperlukan untuk memahami data, contohnya teknik visualisasi data atau exploratory data analysis.
+![alt text](asset/univariate.png)
 
 ## Data Preparation
-Pada bagian ini Anda menerapkan dan menyebutkan teknik data preparation yang dilakukan. Teknik yang digunakan pada notebook dan laporan harus berurutan.
+Pada bagian Data Preparation, terdapat 3 metode yang digunakan dalam proyek ini, yaitu:
+- **Encoding**      : Mengubah data kategori(teks) menjadi angka. Encoding hanya dilakukan pada kolom 'Air Quality' agar komputer dapat memproses data tersebut dengan lebih efisien.
 
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan proses data preparation yang dilakukan
-- Menjelaskan alasan mengapa diperlukan tahapan data preparation tersebut.
+- **Normalisasi**   : Mengubah data numerik ke dalam skala tertentu. Dalam proyek ini, metode Min-Max Normalization digunakan untuk merubah nilai ke rentang [0, 1]. Tujuannya adalah untuk memastikan semua nilai berada dalam skala yang seimbang, sehingga tidak ada fitur yang mendominasi, serta mempermudah pemrosesan data oleh komputer.
+
+- **train-test data split** : Membagi dataset menjadi  2 subset, yaitu: train dataset untuk melatih model dan test dataset untuk menguji performa model terhadap data baru. Pembagiannya adalah 90% data untuk training dan 10% data untuk test.
 
 ## Modeling
-Tahapan ini membahas mengenai model machine learning yang digunakan untuk menyelesaikan permasalahan. Anda perlu menjelaskan tahapan dan parameter yang digunakan pada proses pemodelan.
+Sesuai pernyataaan di **solution statement** proyek ini menggunakan 2 algoritma machine learning, yaitu: **KNN(K-Nearest Neighbors)** dan **neural network tensorflow**.
 
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan kelebihan dan kekurangan dari setiap algoritma yang digunakan.
-- Jika menggunakan satu algoritma pada solution statement, lakukan proses improvement terhadap model dengan hyperparameter tuning. **Jelaskan proses improvement yang dilakukan**.
-- Jika menggunakan dua atau lebih algoritma pada solution statement, maka pilih model terbaik sebagai solusi. **Jelaskan mengapa memilih model tersebut sebagai model terbaik**.
+### **KNN(K-Nearest Neighbour)**:
+- Kelebihan  : Sederhana dan memiliki waktu training yang relatif cepat
+- Kekurangan : Waktu prediksi relatif lambat dan boros daya komputasi saat dataset cukup besar
+- Hyperparameter : **k** yaitu jumlah tetangga terdekat yang diperhitungkan untuk proses klasifikasi data baru, proyek ini menggunakan **k=5** yang didapat dari jumlah kategori(4) + 1 untuk mengantisipasi 2 kategori saling seimbang dan **metric** yaitu metode menghitung jarak antar data, proyek ini menggunakan **metric euclidian** untuk menghitung jarak antar data. Hyperparameter lain akan mengikuti setelan default dari sklearn.
+
+### **Neural Network**:
+- Kelebihan  : Memiliki waktu prediksi yang relatif cepat dan mampu memprediksi data kompleks
+- Kekurangan : Waktu training relatif lambat dan boros daya komputasi
+- Arsitektur :
+| Layer (type)           | Output Shape       | Param # |
+|------------------------|--------------------|---------|
+| input_layer (InputLayer) | (None, 9)          | 0       |
+| dense (Dense)           | (None, 20)         | 200     |
+| dense_1 (Dense)         | (None, 20)         | 420     |
+| dense_2 (Dense)         | (None, 4)          | 84      |
+- Hyperparameter : **Activation function** yang digunakan pada layer **Dense** dan **Dense_1** adalah **ReLU** yang umum digunakan pada hidden layer dan **Softmax** pada **Dense_2** yang cocok untuk multiclass classification. **Optimizer** yang digunakan adalah **Adam**. **Loss function** yang digunakan adalah **sparse_categorical_crossentropy** yang cocok untuk multiclass classification tanpa memerlukan one-hot encoding. **Epoch** yang dipakai adalah **Epoch=10** karena dalam 10 iterasi, model sudah mencapai performa yang cukup baik.
 
 ## Evaluation
-Pada bagian ini anda perlu menyebutkan metrik evaluasi yang digunakan. Lalu anda perlu menjelaskan hasil proyek berdasarkan metrik evaluasi yang digunakan.
+Metric evaluasi yang digunakan pada proyek ini adalah **akurasi**.
+Akurasi adalah rasio prediksi yang benar terhadap total prediksi yang dibuat. Formula untuk menghitung akurasi adalah:
 
-Sebagai contoh, Anda memiih kasus klasifikasi dan menggunakan metrik **akurasi, precision, recall, dan F1 score**. Jelaskan mengenai beberapa hal berikut:
-- Penjelasan mengenai metrik yang digunakan
-- Menjelaskan hasil proyek berdasarkan metrik evaluasi
+\[
+\text{Akurasi} = \frac{\text{Jumlah Prediksi Benar}}{\text{Total Prediksi}}
+\]
 
-Ingatlah, metrik evaluasi yang digunakan harus sesuai dengan konteks data, problem statement, dan solusi yang diinginkan.
+Dimana:
+- **Jumlah Prediksi Benar** adalah jumlah contoh yang diklasifikasikan dengan benar oleh model (baik kelas positif maupun negatif).
+- **Total Prediksi** adalah jumlah keseluruhan contoh dalam dataset.
 
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan formula metrik dan bagaimana metrik tersebut bekerja.
+Hasil menunjukan bahwa akurasi dari model neural network(~93%) mengalahkan akurasi dari model KNN(91.2%). Sehingga ditarik kesimpulan bahwa model neural network lebih baik dibanding KNN.
