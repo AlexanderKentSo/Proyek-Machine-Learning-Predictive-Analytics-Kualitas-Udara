@@ -36,6 +36,8 @@ Proyek ini menggunakan dataset **Air Quality and Pollution Assessment** oleh **M
 | Kondisi data | well-documented & clean |
 | Usability | 10.00 |
 
+![alt text](asset/univariate.png)
+
 ### Variabel fitur:
 - **Temperature (°C)**: Suhu rata-rata di wilayah tersebut.
 - **Humidity (%)**: Kelembapan relatif yang tercatat di - wilayah tersebut.
@@ -54,8 +56,6 @@ Proyek ini menggunakan dataset **Air Quality and Pollution Assessment** oleh **M
 - **Poor**(Polusi udara yang terlihat dan dapat menyebabkan masalah kesehatan bagi kelompok sensitif)
 - **Hazardous**(Udara sangat tercemar yang menimbulkan risiko kesehatan serius bagi populasi).
 
-![alt text](asset/univariate.png)
-
 ## Data Preparation
 Pada bagian Data Preparation, terdapat 3 metode yang digunakan dalam proyek ini, yaitu:
 - **Encoding**      : Mengubah data kategori(teks) menjadi angka. Encoding hanya dilakukan pada kolom 'Air Quality' agar komputer dapat memproses data tersebut dengan lebih efisien.
@@ -70,27 +70,32 @@ Sesuai pernyataaan di **solution statement** proyek ini menggunakan 2 algoritma 
 ### **KNN(K-Nearest Neighbour)**:
 - Kelebihan  : Sederhana dan memiliki waktu training yang relatif cepat
 - Kekurangan : Waktu prediksi relatif lambat dan boros daya komputasi saat dataset cukup besar
-- Hyperparameter : **k** yaitu jumlah tetangga terdekat yang diperhitungkan untuk proses klasifikasi data baru, proyek ini menggunakan **k=5** yang didapat dari jumlah kategori(4) + 1 untuk mengantisipasi 2 kategori saling seimbang dan **metric** yaitu metode menghitung jarak antar data, proyek ini menggunakan **metric euclidian** untuk menghitung jarak antar data. Hyperparameter lain akan mengikuti setelan default dari sklearn.
+- Hyperparameter : 
+**k** yaitu jumlah tetangga terdekat yang diperhitungkan untuk proses klasifikasi data baru, proyek ini menggunakan **k=5** yang didapat dari jumlah kategori(4) + 1 untuk mengantisipasi 2 kategori saling seimbang.
+**metric** yaitu metode menghitung jarak antar data, proyek ini menggunakan **metric euclidian** untuk menghitung jarak antar data. Hyperparameter lain akan mengikuti setelan default dari sklearn.
 
 ### **Neural Network**:
 - Kelebihan  : Memiliki waktu prediksi yang relatif cepat dan mampu memprediksi data kompleks
 - Kekurangan : Waktu training relatif lambat dan boros daya komputasi
 - Arsitektur :
-| Layer (type)           | Output Shape       | Param # |
-|------------------------|--------------------|---------|
-| input_layer (InputLayer) | (None, 9)          | 0       |
-| dense (Dense)           | (None, 20)         | 200     |
-| dense_1 (Dense)         | (None, 20)         | 420     |
-| dense_2 (Dense)         | (None, 4)          | 84      |
-- Hyperparameter : **Activation function** yang digunakan pada layer **Dense** dan **Dense_1** adalah **ReLU** yang umum digunakan pada hidden layer dan **Softmax** pada **Dense_2** yang cocok untuk multiclass classification. **Optimizer** yang digunakan adalah **Adam**. **Loss function** yang digunakan adalah **sparse_categorical_crossentropy** yang cocok untuk multiclass classification tanpa memerlukan one-hot encoding. **Epoch** yang dipakai adalah **Epoch=10** karena dalam 10 iterasi, model sudah mencapai performa yang cukup baik.
+| **Layer (type)** | **Output Shape** | **Param #** |
+| input_layer (InputLayer) | (None, 9) | 0 |
+| dense (Dense) | (None, 20) | 200 |
+| dense_1 (Dense) | (None, 20) | 420 |
+| dense_2 (Dense) | (None, 4) | 84 |
+- Hyperparameter : 
+**Activation function** yang digunakan pada layer **Dense** dan **Dense_1** adalah **ReLU** yang umum digunakan pada hidden layer dan **Softmax** pada **Dense_2** yang cocok untuk multiclass classification. 
+**Optimizer** yang digunakan adalah **Adam**. 
+**Loss function** yang digunakan adalah **sparse_categorical_crossentropy** yang cocok untuk multiclass classification tanpa memerlukan one-hot encoding. 
+**Epoch** yang dipakai adalah **Epoch=10** karena dalam 10 iterasi, model sudah mencapai performa yang cukup baik.
 
 ## Evaluation
 Metric evaluasi yang digunakan pada proyek ini adalah **akurasi**.
 Akurasi adalah rasio prediksi yang benar terhadap total prediksi yang dibuat. Formula untuk menghitung akurasi adalah:
 
-\[
+$$
 \text{Akurasi} = \frac{\text{Jumlah Prediksi Benar}}{\text{Total Prediksi}}
-\]
+$$
 
 Dimana:
 - **Jumlah Prediksi Benar** adalah jumlah contoh yang diklasifikasikan dengan benar oleh model (baik kelas positif maupun negatif).
