@@ -36,7 +36,7 @@ Proyek ini menggunakan dataset **Air Quality and Pollution Assessment** oleh **M
 | Kondisi data | well-documented & clean |
 | Usability | 10.00 |
 
-![alt text](asset/univariate.png)
+![alt text](asset/EDA.png)
 
 ### Variabel fitur:
 - **Temperature (°C)**: Suhu rata-rata di wilayah tersebut.
@@ -78,11 +78,9 @@ Sesuai pernyataaan di **solution statement** proyek ini menggunakan 2 algoritma 
 - Kelebihan  : Memiliki waktu prediksi yang relatif cepat dan mampu memprediksi data kompleks
 - Kekurangan : Waktu training relatif lambat dan boros daya komputasi
 - Arsitektur :
-| **Layer (type)** | **Output Shape** | **Param #** |
-| input_layer (InputLayer) | (None, 9) | 0 |
-| dense (Dense) | (None, 20) | 200 |
-| dense_1 (Dense) | (None, 20) | 420 |
-| dense_2 (Dense) | (None, 4) | 84 |
+
+![alt text](asset/arsitektur.png)
+
 - Hyperparameter : 
 **Activation function** yang digunakan pada layer **Dense** dan **Dense_1** adalah **ReLU** yang umum digunakan pada hidden layer dan **Softmax** pada **Dense_2** yang cocok untuk multiclass classification. 
 **Optimizer** yang digunakan adalah **Adam**. 
