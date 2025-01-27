@@ -56,6 +56,7 @@ Proyek ini menggunakan dataset **Air Quality and Pollution Assessment** oleh **M
 ![alt text](asset/EDA.png)
 
 | **kolom** | **max** | **min** | **mean** | **std** | **null value** |
+| -------- | ------- | -------- | ------- | -------- | ------- |
 | Temperature | 58.6 | 13.4 | 30.02902 | 6.719989 | 0 |
 | Humidity | 128.1 | 36.0 | 70.05612 | 15.86199 | 0 |
 | PM2.5 | 295.0 | 0.0 | 20.14214 | 24.55209 | 0 |
