@@ -127,3 +127,7 @@ Berdasarkan Business Understanding yang sudah dijabarakan sebelumnya, saya menar
 - Dengan adanya sistem klasifikasi kualitas udara ini, masyarakat memiliki panduan untuk mengklasifikasikan kualitas udara di lingkungan merekadenga cepat dan akurat. Hal yang diharapkan mampu meningkatkan keperdulian masyarakat terhadap kualitas udara di lingkungan mereka.
 
 Solution statement yang dijabarkan juga sudah berdampak dalam proyek ini. Di mana ada 2 model machine learnng yang dibuat, yaitu: KNN dan neural network. Hasil menunjukan bahwa akurasi dari model neural network(~96.66%) mengalahkan akurasi dari model KNN(~94.18%). Sehingga ditarik kesimpulan bahwa dalam proyek ini performa model neural network lebih baik dibanding performa model KNN.
+
+## Referensi
+[1] https://ayosehat.kemkes.go.id/bahaya-polusi-udara-bagi-kesehatan
+[2] https://www.kaggle.com/datasets/mujtabamatin/air-quality-and-pollution-assessment
